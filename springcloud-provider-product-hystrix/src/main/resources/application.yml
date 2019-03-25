@@ -1,0 +1,42 @@
+server:
+  port:8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud?serverTimezone=GMT%2B8
+    username: root
+    password: admin
+    type: com.alibaba.druid.pool.DruidDataSource
+  application:
+    name: springcloud-provider-product
+#  security:
+#    user:
+#      name: root #认证用户
+#      password: admin #认证密码
+#      roles:
+#        - USER #角色
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    root: info
+eureka:
+  client: #客户端进行eureka 注册
+    service-url:
+      defaultZone: http://admin:enjoy@eureka1:7001/eureka,http://admin:enjoy@eureka2:7002/eureka,http://admin:enjoy@eureka3:7003/eureka
+  instance:
+    instance-id: springcoud-provider-product
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 2 #设置心跳时间
+    lease-expiration-duration-in-seconds: 5 #设置过期时间
+info:
+  app.name: springcoud-provider-product
+  company.name: enjoy
+  build.artifactId: $project.artifactId$
+  build.modelVersion: $project.modelVersion$
+
+
+
+

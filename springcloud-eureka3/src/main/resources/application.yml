@@ -1,0 +1,20 @@
+server:
+  port: 7003
+
+eureka:
+  instance: #实例定义
+    hostname: eureka3 #定义eureka所在的主机名
+  server:
+    enable-self-preservation: false #开启安全模式
+    eviction-interval-timer-in-ms: 1000 #设置清理时间 默认60秒
+  client:
+    fetch-registry: false #eureka 不许要搜检服务
+    register-with-eureka: false
+    service-url:
+      #defaultZone: http://admin:enjoy@eureka3:7001/
+      defaultZone: http://admin:enjoy@eureka1:7001/eureka,http://admin:enjoy@eureka2:7002/eureka,http://admin:enjoy@eureka3:7003/eureka
+spring:
+  security:
+    user:
+      name: admin
+      password: enjoy

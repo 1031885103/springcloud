@@ -1,0 +1,22 @@
+server:
+  port: 8090
+logging:
+  level:
+    root: info
+    cn.enjoy.service: debug
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://admin:enjoy@eureka1:7001/eureka,http://admin:enjoy@eureka2:7002/eureka,http://admin:enjoy@eureka3:7003/eureka
+feign:
+  compression:
+    request:
+      enable: true #开启压缩
+      mimeTypes:
+        -text/xml
+        -application/xml
+        -application/json
+      minRequestSize: 2048
+
+

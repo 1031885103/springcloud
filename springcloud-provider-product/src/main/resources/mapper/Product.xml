@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.enjoy.mapper.ProductMapper">
+    <resultMap id="Product" type="cn.enjoy.api.Product">
+        <id property="productId" column="productId" javaType="int"></id>
+        <result property="productName" column="productName" javaType="java.lang.String"/>
+        <result property="productDesc" column="productDesc" javaType="java.lang.String"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.enjoy.api.Product" useGeneratedKeys="true">
+
+        insert into Product(productName,productDesc) values(#{product.productName},#{product.productDesc})
+    </insert>
+    <select id="selectAll" resultType="cn.enjoy.api.Product">
+        select * from Product
+    </select>
+
+    <delete id="delete" parameterType="int">
+       delete from product where productId=#{productId}
+    </delete>
+</mapper>
